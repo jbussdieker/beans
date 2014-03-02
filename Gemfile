@@ -59,3 +59,4 @@ group :test do
 end
 
 gem "devise"
+gem 'coveralls', require: false
