@@ -2,10 +2,55 @@ require 'spec_helper'
 
 describe "Accounts" do
   describe "GET /accounts" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get accounts_path
-      response.status.should be(200)
+    it "displays heading", js: true do
+      visit accounts_path
+      page.should have_content("accounts")
+    end
+  end
+
+  describe "Creates accounts" do
+    before do
+      visit accounts_path
+      page.should have_content("accounts")
+      click_link "New"
+    end
+
+    it "works", js: true do
+      expect {
+        fill_in "Name", with: "blah"
+        fill_in "Description", with: "test"
+        click_button "Create"
+        page.should have_content("success")
+      }.to change(Account, :count).by(1)
+    end
+  end
+
+  describe "Edit Account" do
+    before do
+      @account = FactoryGirl.create(:account)
+      visit accounts_path
+    end
+
+    it "displays success flash", js: true do
+      click_link "Edit"
+      fill_in "Name", with: "foo"
+      click_button "Update"
+      page.should have_content("success")
+    end
+  end
+
+  describe "Deletes accounts" do
+    before do
+      @account = FactoryGirl.create(:account)
+      visit accounts_path
+    end
+
+    it "works", js: true do
+      expect {
+        click_link "Destroy"
+        alert = page.driver.browser.switch_to.alert
+        alert.accept
+      }.to change(Account, :count).by(-1)
     end
   end
 end
