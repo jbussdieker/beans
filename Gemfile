@@ -56,6 +56,10 @@ group :test do
   gem "cucumber-rails", require: false
   gem "selenium-webdriver"
   gem "faker"
+  if RUBY_PLATFORM.downcase.include?("darwin")
+    gem 'rb-fsevent'
+    gem 'growl' # also install growlnotify
+  end
 end
 
 gem "devise"
