@@ -7,3 +7,6 @@ script:
   - bundle exec rspec
 before_script:
   - cp config/database.travis.yml config/database.yml
+  - wget http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux32.zip
+  - unzip chromedriver_linux32.zip
+  - sudo mv chromedriver /usr/bin
