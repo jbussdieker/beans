@@ -6,7 +6,7 @@ describe "Transactions" do
   end
 
   describe "GET /transactions" do
-    it "works! (now write some real specs)" do
+    it "displays heading", js: true do
       visit transactions_path
       page.should have_content("Transactions")
     end
