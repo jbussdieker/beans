@@ -6,4 +6,5 @@ describe Account do
   end
 
   it { should belong_to(:user) }
+  it { should belong_to(:account_type) }
 end

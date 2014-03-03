@@ -1,5 +1,6 @@
 <%= simple_form_for(@account) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
+  <%= f.input :account_type_id, collection: AccountType.all.collect {|a| [a.name, a.id]} %>
   <%= f.button :submit %>
 <% end %>

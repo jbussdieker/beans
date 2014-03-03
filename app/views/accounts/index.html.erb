@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Type</th>
       <th>Description</th>
       <th></th>
     </tr>
@@ -17,6 +18,7 @@
     <% @accounts.each do |account| %>
       <tr>
         <td><%= account.name %></td>
+        <td><%= account.account_type %></td>
         <td><%= account.description %></td>
         <td>
           <%= link_to 'Show', account, class: 'btn btn-xs btn-default' %>

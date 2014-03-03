@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+AccountType.create(name: 'Asset')
+AccountType.create(name: 'Liability')
+AccountType.create(name: 'Owner\'s Equity')
+AccountType.create(name: 'Income')
+AccountType.create(name: 'Expense')
