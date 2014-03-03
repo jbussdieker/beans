@@ -2,7 +2,7 @@ class CreateTransactions < ActiveRecord::Migration
   def change
     create_table :transactions do |t|
       t.integer :user_id
-      t.datetime :date
+      t.date :date
       t.string :memo
 
       t.timestamps
