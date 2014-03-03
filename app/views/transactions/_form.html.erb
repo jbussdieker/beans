@@ -1,7 +1,10 @@
 <%= simple_form_for(@transaction) do |f| %>
   <%= f.error_notification %>
 
+  <%= f.input :payee %>
   <%= f.input :date %>
   <%= f.input :memo %>
+  <%= f.input :amount %>
+
   <%= f.button :submit %>
 <% end %>

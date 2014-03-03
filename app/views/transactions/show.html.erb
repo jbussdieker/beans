@@ -13,3 +13,21 @@
   <strong>Memo:</strong>
   <%= @transaction.memo %>
 </p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Account</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transaction.journals.each do |journal| %>
+      <tr>
+        <td><%= journal.account %></td>
+        <td><%= journal.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
