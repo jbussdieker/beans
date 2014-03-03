@@ -10,6 +10,7 @@
       <th>Name</th>
       <th>Type</th>
       <th>Description</th>
+      <th>Balance</th>
       <th></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td><%= link_to account.name, account %></td>
         <td><%= account.account_type %></td>
         <td><%= account.description %></td>
+        <td><%= number_to_currency account.journals.sum(:amount) %></td>
         <td>
           <%= link_to 'Edit', edit_account_path(account), class: 'btn btn-xs btn-default' %>
           <%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
