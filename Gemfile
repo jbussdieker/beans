@@ -65,3 +65,4 @@ end
 gem "devise"
 gem 'coveralls', require: false
 gem 'rails-bootstrap', '~> 3.0.0'
+gem 'simple_form'
