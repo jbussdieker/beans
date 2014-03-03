@@ -1,4 +1,6 @@
 Beans::Application.routes.draw do
+  resources :transactions
+
   resources :accounts
 
   devise_for :users
