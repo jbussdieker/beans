@@ -6,5 +6,16 @@
   <%= f.input :memo %>
   <%= f.input :amount %>
 
+  <div class="well well-sm">
+    <%= f.label :journals %>
+    <%= f.fields_for :journals do |builder| %>
+      <%= render 'journal_fields', :f => builder %>
+    <% end %>
+
+    <div>
+      <%= link_to_add_fields "Add Journal", f, :journals %>
+    </div>
+  </div>
+
   <%= f.button :submit %>
 <% end %>
