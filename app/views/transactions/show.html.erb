@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% title @transaction.date %>
+
+<p>
+  <%= link_to 'Back', transactions_path, class: 'btn btn-default' %>
+</p>
 
 <p>
   <strong>Date:</strong>
@@ -9,6 +13,3 @@
   <strong>Memo:</strong>
   <%= @transaction.memo %>
 </p>
-
-<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
-<%= link_to 'Back', transactions_path %>
