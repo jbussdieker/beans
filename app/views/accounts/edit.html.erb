@@ -1,6 +1,7 @@
 <h1>Editing account</h1>
 
-<%= render 'form' %>
+<p>
+  <%= link_to 'Back', accounts_path, class: 'btn btn-default' %>
+</p>
 
-<%= link_to 'Show', @account %> |
-<%= link_to 'Back', accounts_path %>
+<%= render 'form' %>
