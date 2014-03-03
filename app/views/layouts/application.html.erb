@@ -9,6 +9,12 @@
 <body>
 
 <div class="container">
+  <h1><%= yield(:title) %></h1>
+
+  <% flash.each do |type, message| %>
+    <%= flash_message(type, message) %>
+  <% end %>
+
   <%= yield %>
 </div>
 

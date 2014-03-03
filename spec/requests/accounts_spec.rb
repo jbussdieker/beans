@@ -54,6 +54,7 @@ describe "Accounts" do
         click_link "Destroy"
         alert = page.driver.browser.switch_to.alert
         alert.accept
+        page.should have_content("Accounts")
       }.to change(Account, :count).by(-1)
     end
   end
