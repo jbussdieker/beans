@@ -6,4 +6,5 @@ describe Journal do
   end
 
   it { should belong_to(:account) }
+  it { should belong_to(:transaction) }
 end
