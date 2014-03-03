@@ -3,19 +3,17 @@ class TransactionsController < ApplicationController
   before_filter :authenticate_user!
 
   # GET /transactions
-  # GET /transactions.json
   def index
-    @transactions = Transaction.all
+    @transactions = current_user.transactions
   end
 
   # GET /transactions/1
-  # GET /transactions/1.json
   def show
   end
 
   # GET /transactions/new
   def new
-    @transaction = Transaction.new
+    @transaction = current_user.transactions.new
   end
 
   # GET /transactions/1/edit
@@ -24,7 +22,7 @@ class TransactionsController < ApplicationController
 
   # POST /transactions
   def create
-    @transaction = Transaction.new(transaction_params)
+    @transaction = current_user.transactions.new(transaction_params)
 
     if @transaction.save
       redirect_to @transaction, notice: 'Transaction was successfully created.'
@@ -51,7 +49,7 @@ class TransactionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_transaction
-      @transaction = Transaction.find(params[:id])
+      @transaction = current_user.transactions.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
