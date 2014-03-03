@@ -1,17 +1,21 @@
 require 'spec_helper'
 
 describe "Accounts" do
+  before do
+    @user = login(:user)
+  end
+
   describe "GET /accounts" do
     it "displays heading", js: true do
       visit accounts_path
-      page.should have_content("accounts")
+      page.should have_content("Accounts")
     end
   end
 
   describe "Creates accounts" do
     before do
       visit accounts_path
-      page.should have_content("accounts")
+      page.should have_content("Accounts")
       click_link "New"
     end
 
@@ -27,7 +31,7 @@ describe "Accounts" do
 
   describe "Edit Account" do
     before do
-      @account = FactoryGirl.create(:account)
+      @account = FactoryGirl.create(:account, user: @user)
       visit accounts_path
     end
 
@@ -41,7 +45,7 @@ describe "Accounts" do
 
   describe "Deletes accounts" do
     before do
-      @account = FactoryGirl.create(:account)
+      @account = FactoryGirl.create(:account, user: @user)
       visit accounts_path
     end
 

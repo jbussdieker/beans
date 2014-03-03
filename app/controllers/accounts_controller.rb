@@ -1,20 +1,19 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /accounts
-  # GET /accounts.json
   def index
-    @accounts = Account.all
+    @accounts = current_user.accounts
   end
 
   # GET /accounts/1
-  # GET /accounts/1.json
   def show
   end
 
   # GET /accounts/new
   def new
-    @account = Account.new
+    @account = current_user.accounts.new
   end
 
   # GET /accounts/1/edit
@@ -22,49 +21,35 @@ class AccountsController < ApplicationController
   end
 
   # POST /accounts
-  # POST /accounts.json
   def create
-    @account = Account.new(account_params)
+    @account = current_user.accounts.new(account_params)
 
-    respond_to do |format|
-      if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @account }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
-      end
+    if @account.save
+      redirect_to @account, notice: 'Account was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /accounts/1
-  # PATCH/PUT /accounts/1.json
   def update
-    respond_to do |format|
-      if @account.update(account_params)
-        format.html { redirect_to @account, notice: 'Account was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
-      end
+    if @account.update(account_params)
+      redirect_to @account, notice: 'Account was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
   # DELETE /accounts/1
-  # DELETE /accounts/1.json
   def destroy
     @account.destroy
-    respond_to do |format|
-      format.html { redirect_to accounts_url }
-      format.json { head :no_content }
-    end
+    redirect_to accounts_url
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_account
-      @account = Account.find(params[:id])
+      @account = current_user.accounts.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
