@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(version: 20140303043338) do
 
   create_table "transactions", force: true do |t|
     t.integer  "user_id"
+    t.string   "payee"
     t.date     "date"
     t.string   "memo"
+    t.decimal  "amount",     precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
