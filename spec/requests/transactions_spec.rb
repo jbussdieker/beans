@@ -1,11 +1,14 @@
 require 'spec_helper'
 
 describe "Transactions" do
+  before do
+    @user = login(:user)
+  end
+
   describe "GET /transactions" do
     it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get transactions_path
-      response.status.should be(200)
+      visit transactions_path
+      page.should have_content("Transactions")
     end
   end
 end

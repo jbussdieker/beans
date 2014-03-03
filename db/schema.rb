@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140303043338) do
   end
 
   create_table "transactions", force: true do |t|
+    t.integer  "user_id"
     t.datetime "date"
     t.string   "memo"
     t.datetime "created_at"
