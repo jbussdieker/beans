@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :accounts
   has_many :transactions
+
+  def transfers
+    transactions.where(type: "Transfer")
+  end
 end

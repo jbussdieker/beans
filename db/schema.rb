@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140303043338) do
 
   create_table "transactions", force: true do |t|
     t.integer  "user_id"
+    t.string   "type"
     t.string   "payee"
     t.date     "date"
     t.string   "memo"

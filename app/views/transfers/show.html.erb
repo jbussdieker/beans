@@ -1,0 +1,33 @@
+<% title @transfer.date %>
+
+<p>
+  <%= link_to 'Back', transactions_path, class: 'btn btn-default' %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @transfer.date %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @transfer.memo %>
+</p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Account</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transfer.journals.each do |journal| %>
+      <tr>
+        <td><%= journal.account %></td>
+        <td><%= journal.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

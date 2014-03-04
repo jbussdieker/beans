@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
 
   # GET /transactions
   def index
-    @transactions = current_user.transactions
+    @transactions = current_user.transactions.order("date DESC")
   end
 
   # GET /transactions/1

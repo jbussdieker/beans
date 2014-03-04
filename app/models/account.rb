@@ -7,6 +7,10 @@ class Account < ActiveRecord::Base
     name
   end
 
+  def balance
+    journals.sum(:amount)
+  end
+
   def transactions
     journals.collect {|j| [j.transaction, j.amount]}
   end

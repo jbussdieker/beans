@@ -4,7 +4,8 @@ class AccountsController < ApplicationController
 
   # GET /accounts
   def index
-    @accounts = current_user.accounts
+    @assets = current_user.accounts.where(:type => "Asset")
+    @liabilities = current_user.accounts.where(:type => "Liability")
   end
 
   # GET /accounts/1

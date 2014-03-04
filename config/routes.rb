@@ -1,5 +1,6 @@
 Beans::Application.routes.draw do
   resources :transactions
+  resources :transfers
 
   resources :accounts
 
