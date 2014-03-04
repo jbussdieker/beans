@@ -25,7 +25,7 @@ class AccountsController < ApplicationController
     @account = current_user.accounts.new(account_params)
 
     if @account.save
-      redirect_to @account, notice: 'Account was successfully created.'
+      redirect_to account_path(@account), notice: 'Account was successfully created.'
     else
       render action: 'new'
     end
@@ -34,7 +34,7 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1
   def update
     if @account.update(account_params)
-      redirect_to @account, notice: 'Account was successfully updated.'
+      redirect_to account_path(@account), notice: 'Account was successfully updated.'
     else
       render action: 'edit'
     end
@@ -54,6 +54,6 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:name, :description, :account_type_id)
+      params.require(:account).permit(:type, :name, :description)
     end
 end

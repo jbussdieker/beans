@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Type</th>
       <th>Description</th>
       <th>Balance</th>
       <th></th>
@@ -15,25 +16,16 @@
   </thead>
 
   <tbody>
-    <% [:assets, :liabilities, :equity, :income, :expense].each do |account_type| %>
+    <% @accounts.each do |account| %>
       <tr>
-        <th colspan=4><%= account_type.upcase %></th>
-      </tr>
-      <% @accounts.send(account_type).each do |account| %>
-        <tr>
-          <td><%= link_to account.name, account %></td>
-          <td><%= account.description %></td>
-          <td><%= number_to_currency account.journals.sum(:amount) %></td>
-          <td>
-            <%= link_to 'Edit', edit_account_path(account), class: 'btn btn-xs btn-default' %>
-            <%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
-          </td>
-        </tr>
-      <% end %>
-      <tr>
-        <th colspan=2></th>
-        <th><%= number_to_currency @accounts.send(account_type).includes(:journals).sum(:amount) %></th>
-        <th colspan=1></th>
+        <td><%= link_to account.name, account_path(account) %></td>
+        <td><%= account.type %></td>
+        <td><%= account.description %></td>
+        <td><%= number_to_currency account.journals.sum(:amount) %></td>
+        <td>
+          <%= link_to 'Edit', edit_account_path(account), class: 'btn btn-xs btn-default' %>
+          <%= link_to 'Destroy', account_path(account), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -13,15 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140303043338) do
 
-  create_table "account_types", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "accounts", force: true do |t|
     t.integer  "user_id"
-    t.integer  "account_type_id"
+    t.string   "type"
     t.string   "name"
     t.string   "description"
     t.datetime "created_at"
