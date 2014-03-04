@@ -15,10 +15,6 @@ class Transfer < Transaction
     journals.first.account_id = value
   end
 
-  def amount
-    journals.second.amount
-  end
-
   def amount=(value)
     journals.first.update(amount: -(value.to_f))
     journals.second.update(amount: value.to_f)
