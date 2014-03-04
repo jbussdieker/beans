@@ -1,5 +1,5 @@
 <%= simple_form_for(@account, as: :account, url: (@account.persisted? ? account_path(@account) : accounts_path), method: (@account.persisted? ? :patch : :post)) do |f| %>
-  <%= f.input :type %>
+  <%= f.input :type, collection: ["Asset", "Liability", "Income", "Expense", "Equity"] %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.button :submit %>
