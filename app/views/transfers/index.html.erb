@@ -23,7 +23,7 @@
         <td><%= transaction.type %></td>
         <td><%= transaction.payee %></td>
         <td><%= transaction.memo %></td>
-        <td><%= number_to_currency transaction.amount %></td>
+        <td><%= currency transaction.amount %></td>
         <td>
           <%= link_to 'Show', transaction_path(transaction), class: 'btn btn-xs btn-default' %>
           <%= link_to 'Edit', edit_polymorphic_path(transaction), class: 'btn btn-xs btn-default' %>

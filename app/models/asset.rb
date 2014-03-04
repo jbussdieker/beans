@@ -1,6 +1,5 @@
 class Asset < Account
-  def balance
-    balance = super
-    (balance == 0 ? balance : -balance)
+  def multiplier
+    -1
   end
 end

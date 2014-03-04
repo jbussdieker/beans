@@ -4,6 +4,7 @@
   <title>Beans</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -22,6 +23,7 @@
       <ul class="nav navbar-nav text-center">
         <li><%= link_to "Accounts", accounts_path %></li>
         <li><%= link_to "Transactions", transactions_path %></li>
+        <li><%= link_to "Graphs", graphs_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>

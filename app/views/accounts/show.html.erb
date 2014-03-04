@@ -18,6 +18,7 @@
   <thead>
     <tr>
       <th>Date</th>
+      <th>Type</th>
       <th>Payee</th>
     </tr>
   </thead>
@@ -26,8 +27,9 @@
     <% @account.transactions.each do |transaction, amount| %>
       <tr>
         <td><%= transaction.date %></td>
+        <td><%= transaction.type %></td>
         <td><%= transaction.payee %></td>
-        <td><%= amount %></td>
+        <td><%= currency amount %></td>
       </tr>
     <% end %>
   </tbody>

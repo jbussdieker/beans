@@ -9,6 +9,7 @@ class TransfersController < ApplicationController
   # GET /transfers/new
   def new
     @transfer = Transfer.new(user_id: current_user.id)
+    @transfer.date = Time.now.to_date
     @transfer.journals.new
     @transfer.journals.new
   end
@@ -19,7 +20,11 @@ class TransfersController < ApplicationController
 
   # POST /transfers
   def create
-    @transfer = current_user.transfers.new(transfer_params)
+    @transfer = Transfer.new(user_id: current_user.id)
+    @transfer.date = Time.now.to_date
+    @transfer.journals.new
+    @transfer.journals.new
+    @transfer.assign_attributes(transfer_params)
 
     if @transfer.save
       redirect_to @transfer, notice: 'Transaction was successfully created.'

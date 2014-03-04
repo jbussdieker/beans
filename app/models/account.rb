@@ -13,8 +13,12 @@ class Account < ActiveRecord::Base
     name
   end
 
+  def multiplier
+    1
+  end
+
   def balance
-    journals.sum(:amount)
+    journals.sum(:amount) * multiplier
   end
 
   def transactions

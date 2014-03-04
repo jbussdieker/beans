@@ -3,6 +3,7 @@ Beans::Application.routes.draw do
   resources :transfers
 
   resources :accounts
+  resources :graphs
 
   devise_for :users
 
