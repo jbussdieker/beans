@@ -1,7 +1,13 @@
 class Account < ActiveRecord::Base
+  TYPES = ["Asset", "Liability", "Income", "Expense", "Equity"]
+
   belongs_to :user
   belongs_to :account_type
   has_many :journals
+
+  validates :type, presence: true
+  validates :name, presence: true
+  validates_inclusion_of :type, :in => TYPES
 
   def to_s
     name

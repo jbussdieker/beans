@@ -26,7 +26,7 @@ describe AccountsController do
   # This should return the minimal set of attributes required to create a valid
   # Account. As you add validations to Account, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => @user.id } }
+  let(:valid_attributes) { { "type" => "Asset", "name" => @user.id } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -37,7 +37,8 @@ describe AccountsController do
     it "assigns all accounts as @accounts" do
       account = @user.accounts.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:accounts).should eq([account])
+      assigns(:assets).should eq([account])
+      assigns(:liabilities).should eq([])
     end
   end
 
@@ -80,7 +81,7 @@ describe AccountsController do
 
       it "redirects to the created account" do
         post :create, {:account => valid_attributes}, valid_session
-        response.should redirect_to(Account.last)
+        response.should redirect_to(account_path(Account.last))
       end
     end
 
@@ -122,7 +123,7 @@ describe AccountsController do
       it "redirects to the account" do
         account = @user.accounts.create! valid_attributes
         put :update, {:id => account.to_param, :account => valid_attributes}, valid_session
-        response.should redirect_to(account)
+        response.should redirect_to(account_path(account))
       end
     end
 

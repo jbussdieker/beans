@@ -2,18 +2,15 @@ class TransfersController < ApplicationController
   before_action :set_transfer, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
-  # GET /transfers
-  def index
-    @transfers = current_user.transfers
-  end
-
   # GET /transfers/1
   def show
   end
 
   # GET /transfers/new
   def new
-    @transfer = current_user.transfers.new
+    @transfer = Transfer.new(user_id: current_user.id)
+    @transfer.journals.new
+    @transfer.journals.new
   end
 
   # GET /transfers/1/edit
@@ -49,11 +46,11 @@ class TransfersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_transfer
-      @transfer = current_user.transfers.find(params[:id])
+      @transfer = current_user.transactions.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transfer_params
-      params.require(:transfer).permit(:payee, :date, :memo, :amount, journals_attributes: [:id, :account_id, :amount, :_destroy])
+      params.require(:transfer).permit(:payee, :date, :memo, :amount, :from_account_id, :to_account_id)
     end
 end

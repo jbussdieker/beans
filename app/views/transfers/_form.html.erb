@@ -2,19 +2,10 @@
   <%= f.error_notification %>
 
   <%= f.input :date, as: :string %>
-  <%= f.input :payee %>
   <%= f.input :memo %>
-
-  <div class="well well-sm">
-    <%= f.label :journals %>
-    <%= f.fields_for :journals do |builder| %>
-      <%= render 'journal_fields', :f => builder %>
-    <% end %>
-
-    <div>
-      <%= link_to_add_fields "Add Journal", f, :journals %>
-    </div>
-  </div>
+  <%= f.input :from_account_id, collection: Account.order(:name).collect {|a| [a.name, a.id]} %>
+  <%= f.input :to_account_id, collection: Account.order(:name).collect {|a| [a.name, a.id]} %>
+  <%= f.input :amount %>
 
   <%= f.button :submit %>
 <% end %>

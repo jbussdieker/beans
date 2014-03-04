@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20140303043338) do
     t.string   "payee"
     t.date     "date"
     t.string   "memo"
-    t.decimal  "amount",     precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end

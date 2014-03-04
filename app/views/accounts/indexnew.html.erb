@@ -1,0 +1,73 @@
+<% title 'Accounts' %>
+
+<p>
+  <%= link_to 'New Account', new_account_path, class: 'btn btn-primary' %>
+</p>
+
+<h3>Assets</h3>
+
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th style='text-align: right'>Balance</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assets.each do |account| %>
+      <tr>
+        <td><%= link_to account.name, account_path(account) %></td>
+        <td><%= account.description %></td>
+        <td style='text-align: right'><%= currency account.balance %></td>
+        <td style='text-align: right'>
+          <%= link_to 'Edit', edit_account_path(account), class: 'btn btn-xs btn-default' %>
+          <%= link_to 'Destroy', account_path(account), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td></td>
+      <td></td>
+      <td style='text-align: right'><%= currency -@assets.includes(:journals).sum(:amount) %></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Liabilities</h3>
+
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th style='text-align: right'>Balance</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @liabilities.each do |account| %>
+      <tr>
+        <td><%= link_to account.name, account_path(account) %></td>
+        <td><%= account.description %></td>
+        <td style='text-align: right'><%= currency account.balance %></td>
+        <td style='text-align: right'>
+          <%= link_to 'Edit', edit_account_path(account), class: 'btn btn-xs btn-default' %>
+          <%= link_to 'Destroy', account_path(account), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td></td>
+      <td></td>
+      <td style='text-align: right'><%= currency -@liabilities.includes(:journals).sum(:amount) %></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

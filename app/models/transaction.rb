@@ -1,9 +1,6 @@
 class Transaction < ActiveRecord::Base
-  has_many :journals
+  has_many :journals, dependent: :delete_all
 
   accepts_nested_attributes_for :journals, :allow_destroy => true
 
-  def amount
-    journals.first.amount
-  end
 end

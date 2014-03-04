@@ -2,7 +2,20 @@ require 'spec_helper'
 
 describe "accounts/index" do
   before(:each) do
-    assign(:accounts, [
+    assign(:assets, [
+      stub_model(Account,
+        :user_id => 1,
+        :name => "Name",
+        :description => "Description"
+      ),
+      stub_model(Account,
+        :user_id => 1,
+        :name => "Name",
+        :description => "Description"
+      )
+    ])
+
+    assign(:liabilities, [
       stub_model(Account,
         :user_id => 1,
         :name => "Name",
