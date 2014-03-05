@@ -6,7 +6,7 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @account.account_type %>
+  <%= @account.type %>
 </p>
 
 <p>
@@ -20,6 +20,8 @@
       <th>Date</th>
       <th>Type</th>
       <th>Payee</th>
+      <th class="amount-column">Amount</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -29,7 +31,12 @@
         <td><%= transaction.date %></td>
         <td><%= transaction.type %></td>
         <td><%= transaction.payee %></td>
-        <td><%= currency amount %></td>
+        <td class="amount-column"><%= currency amount %></td>
+        <td class="action-column">
+          <%= link_to 'Show', transaction_path(transaction), class: 'btn btn-xs btn-default' %>
+          <%= link_to 'Edit', edit_polymorphic_path(transaction), class: 'btn btn-xs btn-default' %>
+          <%= link_to 'Destroy', transaction_path(transaction), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>

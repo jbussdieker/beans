@@ -12,7 +12,7 @@
       <th>Type</th>
       <th>Payee</th>
       <th>Memo</th>
-      <th>Amount</th>
+      <th class="amount-column">Amount</th>
       <th></th>
     </tr>
   </thead>
@@ -20,13 +20,12 @@
   <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= transaction.date %></td>
+        <td><%= link_to transaction.date, transaction_path(transaction) %></td>
         <td><%= transaction.type %></td>
         <td><%= transaction.payee %></td>
         <td><%= transaction.memo %></td>
-        <td><%= currency transaction.amount %></td>
-        <td>
-          <%= link_to 'Show', transaction_path(transaction), class: 'btn btn-xs btn-default' %>
+        <td class="amount-column"><%= currency transaction.amount %></td>
+        <td class="action-column">
           <%= link_to 'Edit', edit_polymorphic_path(transaction), class: 'btn btn-xs btn-default' %>
           <%= link_to 'Destroy', transaction_path(transaction), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
         </td>

@@ -10,7 +10,7 @@
       <th>Name</th>
       <th>Type</th>
       <th>Description</th>
-      <th style='text-align: right'>Balance</th>
+      <th class='balance-column'>Balance</th>
       <th></th>
     </tr>
   </thead>
@@ -21,8 +21,8 @@
         <td><%= link_to account.name, account_path(account) %></td>
         <td><%= account.type %></td>
         <td><%= account.description %></td>
-        <td style='text-align: right'><%= currency account.balance %></td>
-        <td style='text-align: right'>
+        <td class='balance-column'><%= currency account.balance %></td>
+        <td class='action-column'>
           <%= link_to 'Edit', edit_account_path(account), class: 'btn btn-xs btn-default' %>
           <%= link_to 'Destroy', account_path(account), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
         </td>

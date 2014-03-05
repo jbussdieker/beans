@@ -19,3 +19,15 @@ body {
 .negative {
   color: red;
 }
+
+.amount-column {
+  text-align: right;
+}
+
+.balance-column {
+  text-align: right;
+}
+
+.action-column {
+  text-align: right;
+}
