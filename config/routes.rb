@@ -3,7 +3,19 @@ Beans::Application.routes.draw do
   resources :transfers
 
   resources :accounts
-  resources :graphs
+  resources :graphs do
+    collection do
+      get 'income'
+      get 'expense'
+      get 'assets'
+      get 'equity'
+    end
+  end
+  resources :reports do
+    collection do
+      get 'balance_sheet'
+    end
+  end
 
   devise_for :users
 
